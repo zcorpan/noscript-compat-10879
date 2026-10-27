@@ -41,6 +41,15 @@ Verified with `sanity/noscript-modes.html` in Chrome Canary 158.0.8110.0 and Fir
   Chromium-like parsing moves noscripts with element children into the live document, where they
   load.
 
+- Non-visual effects (section 4): every page that hit in any sample (846) was traced at runtime
+  to see what scripts do with the parsed noscript content, and every call site where scripts used it
+  was code-reviewed. In the random sample, #9426 vs Gecko today changes nothing users can see or
+  do; ~1,300 of the 59,711 pages (217–4,338) differ only in tracking fetches. Vs Chromium, the one
+  user-facing change is an improvement (equity.wwu.edu: a hidden noscript input no longer steals the
+  search field's label); ~580 pages (236–3,010) stop fetching images that are never shown and ~5,700
+  (3,491–9,516) differ only in tracking fetches. The only user-facing change in the top-100 samples
+  is a neutral one on everythingfor420.com (which button Enter uses in the cart drawer).
+
 ## Summary (2026-07-01 crawl, top 100 per counter)
 
 - Sample: the top 100 pages by rank for each of Chromium's five noscript use counters in the
@@ -174,6 +183,110 @@ missing in C) turned out to be an order effect: whichever mode loads first rende
 `scripts/extrapolate.py 2026-10-01/random` → `2026-10-01/random/extrapolation.md`: (count / 100) ×
 stratum size per stratum, with exact binomial intervals; the summed bounds are conservative.
 
+## 4. Non-visual effects: what scripts do with the noscript content
+
+The visual comparison can't see effects that don't render: a script that reads elements from a
+parsed noscript, form controls or ids inside an inserted noscript, fetches, serialization. So for
+every page that hit in any detection pass (846 unique, `nonvisual/pages.jsonl`), a runtime trace
+recorded what happens to noscript content, and the code at each call site that used it was read.
+
+Trace (`trace.js`, a preload script in every frame, run by `trace.py`; each page once in mode 1 and
+once in mode 2, loaded, scrolled to the bottom in steps, 6s): wraps the parse entry points
+(DOMParser, `parseHTMLUnsafe`, innerHTML/outerHTML/insertAdjacentHTML/setHTMLUnsafe and
+createContextualFragment in windowless documents and template, `document.write` in windowless
+documents, XHR `responseXML`/`response`), marks the elements that came from noscript content
+(descendants, and elements a head noscript hoisted into body), and records queries on the parsed
+tree (with result counts, to compare between modes), serialization, text reads, clones, insertion of
+marked nodes into the live document (whole noscript, or outside any noscript), resources fetched from
+noscript URLs (stored as URL hashes), and JS errors with stack frames. `sanity/trace-test.html` →
+`sanity/trace-modes.txt` checks each entry point and consumer in all three modes. Raw output:
+`nonvisual/results.jsonl` (page text, final URLs and queries are not recorded; frames and errors are
+scrubbed).
+
+`scripts/trace_summary.py` groups parses by entry point and calling script (`nonvisual/groups.csv`,
+436 groups) and classes each: `none` (nothing used the noscript-derived elements; 278), `tracking`
+(only tracking content became live; 37), `hidden` (only whole noscripts were inserted; 14), `review`
+(queries that found noscript-derived elements, serialization, text reads, fetch or error
+differences; 107). Every `review` group and a seeded sample of the others (30 `none`, 10
+`tracking`, 5 `hidden`) got a dossier (`scripts/dossiers.py`: trace events from both modes and the
+calling code around each stack frame, fetched live; not committed) that was read by AI agents
+against a written brief, giving a verdict per comparison (`nonvisual/reviews.jsonl`, 152 groups:
+purpose, what happens to the noscript content, effect, evidence, confidence):
+
+- `none`: no observable difference. `invisible`: only tracking/analytics fetches or data never shown
+  (these matter to site owners, not users). `benign`: visible to scripts or the network only (e.g.
+  hidden images no longer fetched). `user-facing`: users can see or experience a difference.
+- Sampled automatic classes held for 42 of 45 groups. One `tracking` group was really `none`. Two
+  of 5 `hidden` groups were not: an inserted noscript is hidden, but in Chromium (and in Gecko for
+  DOMParser) its children are live DOM. So every insertion of a noscript holding form controls,
+  labels, links, metadata or stylesheets was then listed across all groups: 5 groups, all reviewed.
+- 125 of 152 verdicts are high confidence, the rest medium (mostly where a page blocked the second visit or
+  the script fetch, or the code was only located by name).
+
+The user-facing ones were checked in the build (`scripts/targeted.py` → `nonvisual/targeted.txt`):
+
+- [equity.wwu.edu](https://equity.wwu.edu/) (template; random sample): the header template has a
+  no-JS `<noscript><form><label for=search-box><input id=search-box>` fallback inside `<wwu-search>`,
+  which then appends its search dialog with its own `id=search-box`. In Chromium-like mode there
+  are two `#search-box` and the visible dialog's label targets the hidden noscript input (no
+  accessible name for the visible field; clicking the label doesn't focus it). Gecko today and
+  #9426 have one. #9426 is better than Chromium.
+- [everythingfor420.com](https://everythingfor420.com/) (DOMParser, custom cart script; 3 pages in
+  the top-100 samples): after a cart drawer refresh the theme moves parsed nodes into the drawer, so
+  in Gecko and Chromium today a hidden `<noscript><button type=submit form=CartDrawer-Form>Update`
+  becomes the form's default button; with #9426 it's "Check out", as on a fresh load. Enter in a
+  drawer quantity field goes to the cart page today and to checkout with #9426. Neutral. (Dawn's own
+  cart code re-parses with innerHTML, where noscript is text in every mode.)
+
+Per page, the most significant verdict among its groups (`scripts/nonvisual_summary.py` →
+`nonvisual/verdicts.csv`, `nonvisual/summary.md`). Groups without a review take their automatic
+class (`none` → none; `tracking`, `hidden` → invisible). Pages that hit only in sandboxed documents
+(no scripts) are none here; their rendering is covered by section 2-3.
+
+| Sample (pages that hit) | Comparison | none | invisible | benign | user-facing | not traced |
+|---|---|---|---|---|---|---|
+| 2026-07-01 top 100 (287) | #9426 vs Chromium | 203 | 74 | 2 | 2 | 6 |
+| | #9426 vs Gecko | 263 | 16 | 0 | 2 | 6 |
+| 2026-10-01 top 100 (338) | #9426 vs Chromium | 225 | 102 | 2 | 2 | 7 |
+| | #9426 vs Gecko | 306 | 23 | 0 | 2 | 7 |
+| 2026-10-01 random (390) | #9426 vs Chromium | 313 | 65 | 7 | 1 | 4 |
+| | #9426 vs Gecko | 373 | 13 | 0 | 0 | 4 |
+
+Extrapolated from the random sample to the 59,711 pages (sampled pages without a live hit count as
+none; per-stratum tables in `nonvisual/summary.md`):
+
+| Comparison | none | invisible | benign | user-facing | not traced |
+|---|---|---|---|---|---|
+| #9426 vs Chromium | ~53,206 (49,304–55,537) | ~5,692 (3,491–9,516) | ~578 (236–3,010) | ~85 (2–2,318) | ~150 (16–2,424) |
+| #9426 vs Gecko | ~58,260 (55,173–59,409) | ~1,301 (217–4,338) | 0 (0–2,163) | 0 (0–2,163) | ~150 (16–2,424) |
+
+What's behind them:
+
+- invisible: noscript tracking fallbacks (Facebook/Bing/LinkedIn pixels, GTM `ns.html` iframes,
+  counters) that snippet injectors (Tiendanube, Shopline, adsninja, Next.js/Blazor custom-code
+  components, jQuery `.load`) insert, or that consent managers (Transcend airgap, Feroot) re-serialize.
+  Chromium fetches them inside hidden noscripts or after hoisting; #9426 doesn't. Vs Gecko only the
+  DOMParser/XHR cases remain (Gecko already parses the template/windowless paths as text). Also
+  Plerdy's SEO audit and an AI chat widget's page summary, which see slightly different content.
+- benign: Shopify themes and a WordPress site using jQuery `.load(url selector)`, and morphdom on
+  erotik.com, move noscripts with fallback `<img>`s into the page; Chromium fetches those images but
+  never shows them; #9426 doesn't fetch them (the lazy loaders that show the real images work in
+  both).
+- none, often for a reason worth knowing: jQuery Migrate's `htmlPrefilter` check (Tray stores) only
+  compares parse results; pjax libraries already convert element noscripts to text; DOMPurify drops
+  noscript; markup that's serialized and set as innerHTML on the live page becomes hidden text in
+  every mode (Pixel Union themes' recommendations, Shopify section rendering, infinite scroll).
+- not traced (17 pages): no hit in the trace visit (the page varied) or a parse the trace can't
+  see (an inline script parsing in a realm the preload script doesn't reach). Their visual result
+  stands.
+
+Limits: the trace can't see traversal outside the wrapped APIs (`.children`, `.firstChild`), which
+is why the code was read; its hoisting heuristic also marks real elements that share a URL with a
+noscript fallback, which only pushes groups toward review; scripts were fetched for review after the
+trace, so a few may be newer; interaction was limited to scrolling, so code behind clicks, forms or
+logins (e.g. cart flows) is judged from the code; the reviews are AI readings of mostly minified
+code, checked in the build only for the user-facing ones.
+
 ## Not covered
 
 - Pages with no hit when loaded live (212 of 499): the page changed, the hit needs interaction or
@@ -181,9 +294,7 @@ stratum size per stratum, with exact binomial intervals; the summed bounds are c
 - The 2026-07-01 sample is the top-ranked 100 per counter, not random; the 2026-10-01 random
   sample is what the extrapolation rests on. With 100 per stratum, a rare breakage pattern in the
   large strata (DOMParser especially) could still be missed: 0 of 100 only bounds it below 3.7%.
-- Effects that aren't visible: tracking pixels and GTM `ns.html` iframes inside noscript stop
-  loading under 9426 where Chromium loads them today (37 pages); scripts that query elements inside
-  parsed noscripts (see `libraries.md`).
+- Non-visual effects behind interaction or login beyond what the code review covers (section 4).
 - Users with JavaScript disabled, and WebKit.
 
 ## Reproduce
@@ -206,6 +317,15 @@ python3 scripts/make_random.py queries/2026-10-01/pages-with-counters.csv 2026-1
 # for D in 2026-10-01 2026-10-01/random: detect, scripts/make_hits.py $D, compare, analyze,
 # scripts/triage.py $D/out, review, scripts/summary.py $D
 python3 scripts/extrapolate.py 2026-10-01/random > 2026-10-01/random/extrapolation.md
+# Non-visual (section 4):
+python3 scripts/make_trace_pages.py
+.venv/bin/python scripts/trace_sanity.py "$FIREFOX" > sanity/trace-modes.txt
+.venv/bin/python trace.py "$FIREFOX" nonvisual/pages.jsonl nonvisual --concurrency 6
+python3 scripts/trace_summary.py
+python3 -m venv /tmp/nv-venv && /tmp/nv-venv/bin/pip install jsbeautifier
+/tmp/nv-venv/bin/python scripts/dossiers.py /tmp/nv-dossiers 10879 30 10 5   # then review -> nonvisual/reviews.jsonl
+.venv/bin/python scripts/targeted.py "$FIREFOX" > nonvisual/targeted.txt
+python3 scripts/nonvisual_summary.py
 ```
 
 Live pages change, so a rerun won't match exactly. Screenshots (`out*/shots/`) aren't committed.

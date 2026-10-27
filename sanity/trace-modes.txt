@@ -1,0 +1,31 @@
+## mode 0; pixels fetched: []
+{"content": ["<img src=\"/px-template.gif\">"], "entry": "template", "hoisted": 0, "id": 1, "inside": 0, "noscripts": 1, "parsed": ["&lt;img src=\"/px-template.gif\"&gt;"], "t": "parse", "tags": {}, "withMarkup": 1}
+{"content": ["<img class=fallback src=\"/px-domparser.gif\">"], "entry": "DOMParser", "hoisted": 0, "id": 2, "inside": 1, "noscripts": 1, "parsed": ["<img class=\"fallback\" src=\"/px-domparser.gif\">"], "t": "parse", "tags": {"IMG": 1}, "withMarkup": 1}
+{"api": "querySelectorAll", "derived": 1, "id": 2, "sel": "img.fallback", "t": "query", "total": 1}
+{"content": ["<img src=\"/px-write.gif\">"], "entry": "windowless-write", "hoisted": 0, "id": 3, "inside": 0, "noscripts": 1, "parsed": ["&lt;img src=\"/px-write.gif\"&gt;"], "t": "parse", "tags": {}, "withMarkup": 1}
+{"api": "outerHTML", "id": 3, "len": 99, "t": "serialize"}
+{"api": "querySelector", "derived": 0, "id": 3, "sel": "img", "t": "query", "total": 0}
+{"found": {"noscript:NOSCRIPT": 1}, "id": 1, "into": "HTML", "t": "insert"}
+{"content": [], "entry": "XHR", "hoisted": 0, "id": 4, "inside": 0, "noscripts": 1, "parsed": [], "t": "parse", "tags": {}, "withMarkup": 0}
+{"api": "querySelector", "derived": 0, "id": 4, "sel": "noscript img", "t": "query", "total": 0}
+## mode 1; pixels fetched: ['px-template.gif', 'px-write.gif']
+{"content": ["<img src=\"/px-template.gif\">"], "entry": "template", "hoisted": 0, "id": 1, "inside": 1, "noscripts": 1, "parsed": ["<img src=\"/px-template.gif\">"], "t": "parse", "tags": {"IMG": 1}, "withMarkup": 1}
+{"content": ["<img class=fallback src=\"/px-domparser.gif\">"], "entry": "DOMParser", "hoisted": 0, "id": 2, "inside": 1, "noscripts": 1, "parsed": ["<img class=\"fallback\" src=\"/px-domparser.gif\">"], "t": "parse", "tags": {"IMG": 1}, "withMarkup": 1}
+{"api": "querySelectorAll", "derived": 1, "id": 2, "sel": "img.fallback", "t": "query", "total": 1}
+{"content": ["<img src=\"/px-write.gif\">"], "entry": "windowless-write", "hoisted": 1, "id": 3, "inside": 0, "noscripts": 1, "parsed": [], "t": "parse", "tags": {"IMG": 1}, "withMarkup": 0}
+{"api": "outerHTML", "id": 3, "len": 93, "t": "serialize"}
+{"api": "querySelector", "derived": 1, "id": 3, "sel": "img", "t": "query", "total": 1}
+{"found": {"inside-in-noscript:IMG": 1, "noscript:NOSCRIPT": 1}, "id": 1, "into": "HTML", "t": "insert"}
+{"found": {"hoisted-live:IMG": 1}, "id": 3, "into": "HTML", "t": "insert"}
+{"content": [], "entry": "XHR", "hoisted": 0, "id": 4, "inside": 0, "noscripts": 1, "parsed": [], "t": "parse", "tags": {}, "withMarkup": 0}
+{"api": "querySelector", "derived": 0, "id": 4, "sel": "noscript img", "t": "query", "total": 0}
+## mode 2; pixels fetched: []
+{"content": ["<img src=\"/px-template.gif\">"], "entry": "template", "hoisted": 0, "id": 1, "inside": 0, "noscripts": 1, "parsed": ["<img src=\"/px-template.gif\">"], "t": "parse", "tags": {}, "withMarkup": 1}
+{"content": ["<img class=fallback src=\"/px-domparser.gif\">"], "entry": "DOMParser", "hoisted": 0, "id": 2, "inside": 0, "noscripts": 1, "parsed": ["<img class=fallback src=\"/px-domparser.gif\">"], "t": "parse", "tags": {}, "withMarkup": 1}
+{"api": "querySelectorAll", "derived": 0, "id": 2, "sel": "img.fallback", "t": "query", "total": 0}
+{"content": ["<img src=\"/px-write.gif\">"], "entry": "windowless-write", "hoisted": 0, "id": 3, "inside": 0, "noscripts": 1, "parsed": ["<img src=\"/px-write.gif\">"], "t": "parse", "tags": {}, "withMarkup": 1}
+{"api": "outerHTML", "id": 3, "len": 93, "t": "serialize"}
+{"api": "querySelector", "derived": 0, "id": 3, "sel": "img", "t": "query", "total": 0}
+{"found": {"noscript:NOSCRIPT": 1}, "id": 1, "into": "HTML", "t": "insert"}
+{"content": [], "entry": "XHR", "hoisted": 0, "id": 4, "inside": 0, "noscripts": 1, "parsed": ["<img src=\"/px-xhr.gif\">"], "t": "parse", "tags": {}, "withMarkup": 1}
+{"api": "querySelector", "derived": 0, "id": 4, "sel": "noscript img", "t": "query", "total": 0}

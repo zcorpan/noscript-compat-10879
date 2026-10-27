@@ -1,0 +1,23 @@
+<!doctype html>
+<title>trace test</title>
+<script>
+// 1. template.innerHTML, clone, insert: noscript img derived inside; insertion of noscript into live doc.
+const t = document.createElement('template');
+t.innerHTML = '<div id=t><noscript><img src="/px-template.gif"></noscript></div>';
+document.documentElement.append(document.importNode(t.content, true));
+// 2. DOMParser, then a query that finds the noscript img.
+const doc = new DOMParser().parseFromString('<p>a</p><noscript><img class=fallback src="/px-domparser.gif"></noscript>', 'text/html');
+doc.querySelectorAll('img.fallback');
+// 3. Windowless document.write with noscript in head (hoisted in Chromium-like), then serialize.
+const w = document.implementation.createHTMLDocument('');
+w.open(); w.write('<noscript><img src="/px-write.gif"></noscript><p>x'); w.close();
+w.documentElement.outerHTML;
+// 4. Hoisted element moved into the live document.
+const hoisted = w.querySelector('img');
+if (hoisted) document.documentElement.append(hoisted);
+// 5. XHR responseXML.
+const x = new XMLHttpRequest();
+x.open('GET', 'trace-xhr.html'); x.responseType = 'document';
+x.onload = () => { x.responseXML.querySelector('noscript img'); window.traceDone = true; };
+x.send();
+</script>

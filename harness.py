@@ -62,7 +62,7 @@ def scrub_record(rec):
 
 
 class Browser:
-    def __init__(self, binary, log_path):
+    def __init__(self, binary, log_path, preload=None):
         opts = Options()
         opts.binary_location = binary
         opts.enable_bidi = True
@@ -76,12 +76,29 @@ class Browser:
         self.driver.set_page_load_timeout(30)
         self.driver.set_script_timeout(10)
         self.errors = []
+        self.error_stacks = []
         self.console = []
-        self.driver.script.add_javascript_error_handler(lambda e: self.errors.append(scrub(str(e.text))[:300]))
-        self.driver.script.add_console_message_handler(
-            lambda e: self.console.append(scrub(str(e.text))[:300]) if e.level == 'error' else None)
+        self.trace = []
+        self.driver.script.add_javascript_error_handler(self._on_error)
+        self.driver.script.add_console_message_handler(self._on_console)
+        if preload:
+            self.driver.script.add_preload_script(preload)
         self.version = self.driver.capabilities.get('browserVersion')
         self.home = self.driver.current_window_handle
+
+    def _on_error(self, e):
+        self.errors.append(scrub(str(e.text))[:300])
+        frames = (e.stacktrace or {}).get('callFrames') or []
+        self.error_stacks.append({'text': scrub(str(e.text))[:300],
+                                  'frames': [scrub(f"{f.get('url')}:{f.get('lineNumber')}:{f.get('columnNumber')}") for f in frames[:4]]})
+
+    def _on_console(self, e):
+        text = str(e.text)
+        if text.startswith('NSTRACE '):
+            if len(self.trace) < 3000:
+                self.trace.append(text[8:])
+        elif e.level == 'error':
+            self.console.append(scrub(text)[:300])
 
     def set_mode(self, mode):
         d = self.driver
