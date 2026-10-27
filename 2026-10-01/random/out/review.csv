@@ -60,7 +60,7 @@ idx,rank,counters,page,gecko_vs_chromium,ff9426_vs_gecko,ff9426_vs_chromium,meth
 78,50000000,iframe,https://www.bihouse.co.jp/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
 79,50000000,iframe,https://www.bmainternationalgroup.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
 80,50000000,iframe,https://www.budgetglas.com/,no visible change,no visible change,no visible change,triage,odd mode is one the hit category rules out (or one pair only); noise
-81,50000000,iframe,https://www.careerjobsinternational.org/,no visible change,no visible change,no visible change,recheck,consent dialog and ads vary across loads in every mode
+81,50000000,iframe,https://www.careerjobsinternational.org/,no visible change,no visible change,no visible change,recheck,consent dialog and ads vary across loads in every mode (recheck strip not committed: geo-targeted ad)
 82,50000000,iframe,https://www.comune.saleranosullambro.lo.it/it/news/sagra-del-ringraziamento-2026?type=1,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
 83,50000000,iframe,https://www.crank-scrapers.com/What%20is%20a%20crank-scraper.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
 84,50000000,iframe,https://www.darkmoonrisingpublications.com/bullyingandharassment.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise

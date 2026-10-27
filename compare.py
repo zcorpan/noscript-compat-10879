@@ -101,7 +101,7 @@ def worker(n):
             br = harness.Browser(args.firefox, log)
         with lock:
             with open(results_path, 'a') as f:
-                f.write(json.dumps(res) + '\n')
+                f.write(json.dumps(harness.scrub_record(res)) + '\n')
             hits = sorted({h['category'] for tag in ('A', 'A2', 'B', 'C') for h in res.get(tag, {}).get('noscript', [])})
             print(r['idx'], r['page'][:70], hits, res.get('pixA2B'), res.get('pixA2C'), res.get('error', ''), flush=True)
     br.quit()

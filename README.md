@@ -93,6 +93,11 @@ minus character references) with the parse category, document URL and JS caller.
 sandboxed iframes.
 
 Harness: Selenium 4.51 + geckodriver 0.37.1 with WebDriver BiDi, headless, 1366x768 (`harness.py`).
+Recorded results are scrubbed before publishing (`harness.scrub_record`, applied to the committed
+files with `scripts/scrub_results.py` and by `compare.py` for new runs): page text, titles and final
+URLs are dropped once the text ratios are computed, since they carry geo-targeted content; hit
+document URLs are cut to their origin; error messages lose URL queries and country-specific hosts.
+Review images showing geo-targeted ads were dropped or redacted (noted in `review.csv`).
 Each visit opens a new tab, waits 3s after load, records text, scroll size, noscript counts (top
 document), JS errors and log lines, and takes a full-page screenshot (cropped to 4000px).
 

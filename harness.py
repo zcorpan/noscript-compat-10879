@@ -32,6 +32,35 @@ def scrub(s):
     return URL_QUERY.sub(r'\1', s) if isinstance(s, str) else s
 
 
+ANY_URL_QUERY = re.compile(r'([a-z][a-z0-9+.-]*://[^\s?#"\'<>]+)[?#][^\s"\'<>]*', re.I)
+CC_HOST = re.compile(r'\b(google|bing|yahoo|amazon|facebook)\.(?:co\.)?(?!com\b|net\b|org\b)[a-z]{2}\b')
+
+
+def scrub_record(rec):
+    """Before writing a result: drop what can carry the tester's location and isn't needed after
+    the text ratios are computed (page text, title, final URL after geo redirects), reduce hit
+    document URLs to their origin, and strip queries and country-specific hosts from errors."""
+    def clean(s):
+        return CC_HOST.sub(r'\1.<cc>', ANY_URL_QUERY.sub(r'\1', s)) if isinstance(s, str) else s
+    if 'error' in rec:
+        rec['error'] = clean(rec['error'])
+    for tag in ('A', 'A2', 'B', 'C'):
+        v = rec.get(tag)
+        if not isinstance(v, dict):
+            continue
+        for k in ('text', 'title', 'url'):
+            v.pop(k, None)
+        if 'error' in v:
+            v['error'] = clean(v['error'])
+        for k in ('pageErrors', 'consoleErrors'):
+            if k in v:
+                v[k] = [clean(e) for e in v[k]]
+        for h in v.get('noscript', []):
+            m = re.match(r'[a-z][a-z0-9+.-]*://[^/?#]*', h.get('doc') or '', re.I)
+            h['doc'] = m.group(0) if m else clean(h.get('doc'))
+    return rec
+
+
 class Browser:
     def __init__(self, binary, log_path):
         opts = Options()

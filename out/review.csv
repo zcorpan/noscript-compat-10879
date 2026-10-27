@@ -7,7 +7,7 @@ idx,rank,counters,page,gecko_vs_chromium,ff9426_vs_gecko,ff9426_vs_chromium,meth
 9,5000,DOMParser,https://cuet.nta.nic.in/participating-universities/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
 11,5000,DOMParser,https://sport.sky.it/calcio/mondiali/partite/2026/semifinali/inghilterra-argentina/risultato-gol,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
 16,5000,DOMParser,https://www.huffingtonpost.jp/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
-17,5000,DOMParser,https://www.huffingtonpost.jp/entry/story_jp_6a55d4a5e4b0107f0db80d4c,no visible change,no visible change,no visible change,manual,recheck: recommendation widget rotation
+17,5000,DOMParser,https://www.huffingtonpost.jp/entry/story_jp_6a55d4a5e4b0107f0db80d4c,no visible change,no visible change,no visible change,manual,recheck: recommendation widget rotation (crops and recheck strip not committed: geo-targeted ads)
 18,5000,DOMParser,https://www.losandes.com.ar/sociedad/comercios-cerrados-las-15-transporte-normal-y-calles-valladas-asi-estara-mendoza-argentina-inglaterra-n5998533,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
 19,5000,DOMParser,https://www.mizuhobank.co.jp/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
 22,5000,NoBrowsingContext,https://www.tacobell.com/food/new/enchirito,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
