@@ -1,9 +1,11 @@
-# Per-counter summary of detection and comparison results -> out/summary.md
-import csv, json, collections
-pages = [json.loads(l) for l in open('pages.jsonl')]
-det = {r['idx']: r for r in map(json.loads, open('out-detect/results.jsonl'))}
-cmp_ = {r['idx']: r for r in map(json.loads, open('out/results.jsonl'))}
-rev = {int(r['idx']): r for r in csv.DictReader(open('out/review.csv'))}
+# Per-counter summary of detection and comparison results -> <dir>/out/summary.md
+# Usage: summary.py [<dir>] (default: . for the 2026-07-01 sample)
+import csv, json, collections, sys
+d = sys.argv[1] if len(sys.argv) > 1 else '.'
+pages = [json.loads(l) for l in open(f'{d}/pages.jsonl')]
+det = {r['idx']: r for r in map(json.loads, open(f'{d}/out-detect/results.jsonl'))}
+cmp_ = {r['idx']: r for r in map(json.loads, open(f'{d}/out/results.jsonl'))}
+rev = {int(r['idx']): r for r in csv.DictReader(open(f'{d}/out/review.csv'))}
 COUNTERS = ['template', 'NoBrowsingContext', 'DOMParser', 'XHR', 'iframe']
 out = ['| Counter (crawl) | Pages | Hit in detection | Hit again in comparison | 9426 vs Gecko/Chromium: worse | neutral | no visible change |', '|---|---|---|---|---|---|---|']
 for c in COUNTERS + ['any']:
@@ -27,5 +29,5 @@ out.append('Top-document noscripts with element children (moved in from a parse 
 out.append(f"- more in Chromium-like (B) than Gecko (A2): {moved['B>A2']} pages")
 out.append(f"- more in Gecko (A2) than 9426 (C): {moved['A2>C']} pages")
 out.append('Pages with a rendered top-document noscript: ' + ', '.join(f'{k} {v}' for k, v in moved.items() if k.startswith('rendered')))
-open('out/summary.md', 'w').write('\n'.join(out) + '\n')
+open(f'{d}/out/summary.md', 'w').write('\n'.join(out) + '\n')
 print('\n'.join(out))

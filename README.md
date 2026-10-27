@@ -16,7 +16,32 @@ disagree on which ones (#10879). Here, 9426 also covers noscript serialization a
 Verified with `sanity/noscript-modes.html` in Chrome Canary 158.0.8110.0 and Firefox Nightly 161
 (`sanity/chrome-canary.txt`, `sanity/firefox-nightly.txt`).
 
-## Summary
+## Summary (2026-10-01 crawl, with extrapolation)
+
+- 59,711 pages hit at least one counter in the 2026-10-01 desktop crawl (all pages). Two samples
+  from it: a seeded random sample of 100 per stratum (each page in the stratum of its rarest
+  counter), and the top 100 by rank per counter as in the 2026-07-01 sheet (section 3).
+- Random sample, extrapolated to the 59,711 pages (95% Clopper-Pearson intervals,
+  `2026-10-01/random/extrapolation.md`):
+  - Gecko today vs Chromium: no visible change on any assessable page.
+  - 9426 vs Gecko today, and the same vs Chromium: ~2 pages worse (0–10) and ~2 neutral (0–10), all
+    in the iframe stratum (177 pages); 0 worse or neutral out of 100 in each of the other strata,
+    which bounds each at under 3.7% of its stratum (DOMParser: 0–1,466 of 40,492 pages; template:
+    0–309; NoBrowsingContext: 0–299; XHR: 0–82). Not assessable: 6 of 500 sampled pages.
+  - Worse: [mancity.bg](https://mancity.bg/) again (noscript `<img>` thumbnail fallbacks in a
+    sandboxed mancity.com/news frame become placeholders). Neutral: lisaskinclinic.com's booking
+    widget in `<iframe sandbox="">` loads its stylesheets from `<noscript>`: with markup parsing
+    the styled page shows a preloader that never goes away (no scripts), under 9426 it shows the
+    form unstyled; it doesn't work without scripts either way.
+- Top 100 per counter (499 pages, 338 still hit live): no visible change between Gecko today and
+  Chromium; 9426 vs either: 0 worse, 2 neutral (lisaskinclinic.com again, and
+  static.stileapp.com, served with `CSP: sandbox`, losing its "enable JavaScript" box), 336 no
+  visible change.
+- As in July, the non-visible difference is fetching: on 46 (top 100) and 42 (random) pages,
+  Chromium-like parsing moves noscripts with element children into the live document, where they
+  load.
+
+## Summary (2026-07-01 crawl, top 100 per counter)
 
 - Sample: the top 100 pages by rank for each of Chromium's five noscript use counters in the
   2026-07-01 desktop crawl (499 unique pages; 54k pages hit any counter). It isn't random, so
@@ -106,11 +131,51 @@ document), JS errors and log lines, and takes a full-page screenshot (cropped to
   like page noise: two were in B on DOMParser pages, where modes 0 and 1 are identical, and the one
   C-only exception (shop.tvsmotor.com) didn't reproduce in 3 more loads per mode.
 
+## 3. 2026-10-01 crawl
+
+- `queries/2026-10-01/01-pages-with-counters.sql` → `pages-with-counters.csv`: the same counters on
+  the 2026-10-01 desktop crawl, all pages, every matching page in one query (no scratch table).
+  59,711 pages: DOMParser 41,733, template 8,534, NoBrowsingContext 8,284, XHR 2,261, iframe 177.
+- Top 100 per counter (`scripts/top100.py` → `queries/2026-10-01/top100-per-counter.csv`,
+  `2026-10-01/pages.jsonl`): 499 pages, 181 also in the 2026-07-01 sample (ties within a rank
+  bucket go by URL, so the picks shift as pages come and go).
+- Random sample (`scripts/make_random.py`, seed `10879` → `2026-10-01/random/pages.jsonl`): 100 per
+  stratum, each page in the stratum of its rarest counter (iframe, XHR, NoBrowsingContext, template,
+  DOMParser), so strata are disjoint: iframe 177, XHR 2,261, NoBrowsingContext 8,251, template
+  8,530, DOMParser 40,492 pages.
+
+Same build, harness and passes as section 2, run on each sample (`2026-10-01/out-detect`, `out`,
+and the same under `2026-10-01/random/`).
+
+| Sample | Pages | Hit in detection | Worse | Neutral | No visible change | Not assessable |
+|---|---|---|---|---|---|---|
+| Top 100 per counter | 499 | 338 | 0 | 2 | 496 | 1 |
+| Random | 500 | 390 | 1 | 1 | 492 | 6 |
+
+Ratings are 9426 vs Gecko today (same vs Chromium); pages without a hit count as no visible
+change. Gecko vs Chromium: no visible change on every assessable page. Not assessable: pages that
+failed to load (DNS, timeouts) or were too tall to screenshot.
+
+Review differed from section 2: `analyze.py` flagged 37 (top 100) and 21 (random) pages, and
+`scripts/triage.py` set aside 24 of them where only a mode the hit category rules out differed
+(e.g. B on a DOMParser-only page, where modes 0 and 1 parse identically) or only one pair
+differed. A separate AI agent did a first visual pass over 33 of the other 34 (worshiptogether.com,
+blank in C, went straight to a recheck) and flagged 13. Those were rechecked with two 10s loads per
+mode (`out/recheck/`, lisaskinclinic.com once for both samples) and rated by eye; notes in each
+`review.csv`. Only mancity.bg, lisaskinclinic.com and stileapp held up; the rest didn't reproduce
+or varied the same way in every mode. One (3ple.jp, half the page
+missing in C) turned out to be an order effect: whichever mode loads first renders fully.
+
+`scripts/extrapolate.py 2026-10-01/random` → `2026-10-01/random/extrapolation.md`: (count / 100) ×
+stratum size per stratum, with exact binomial intervals; the summed bounds are conservative.
+
 ## Not covered
 
 - Pages with no hit when loaded live (212 of 499): the page changed, the hit needs interaction or
   logged-in state, or it was character-reference-only (counted by Chromium, not logged here).
-- 54k pages hit the counters; this checks the top-ranked 100 per counter, not a random sample.
+- The 2026-07-01 sample is the top-ranked 100 per counter, not random; the 2026-10-01 random
+  sample is what the extrapolation rests on. With 100 per stratum, a rare breakage pattern in the
+  large strata (DOMParser especially) could still be missed: 0 of 100 only bounds it below 3.7%.
 - Effects that aren't visible: tracking pixels and GTM `ns.html` iframes inside noscript stop
   loading under 9426 where Chromium loads them today (37 pages); scripts that query elements inside
   parsed noscripts (see `libraries.md`).
@@ -129,6 +194,13 @@ python3 scripts/detect_summary.py out-detect > out-detect/summary.md
 .venv/bin/python compare.py compare "$FIREFOX" hits.jsonl out --concurrency 6
 .venv/bin/python analyze.py out && .venv/bin/python scripts/diffcrop.py out
 python3 scripts/summary.py
+# 2026-10-01: queries/2026-10-01/01-pages-with-counters.sql -> pages-with-counters.csv, then
+python3 scripts/top100.py queries/2026-10-01/pages-with-counters.csv queries/2026-10-01/top100-per-counter.csv
+python3 scripts/make_pages.py queries/2026-10-01/top100-per-counter.csv 2026-10-01/pages.jsonl
+python3 scripts/make_random.py queries/2026-10-01/pages-with-counters.csv 2026-10-01/random/pages.jsonl 10879 100
+# for D in 2026-10-01 2026-10-01/random: detect, scripts/make_hits.py $D, compare, analyze,
+# scripts/triage.py $D/out, review, scripts/summary.py $D
+python3 scripts/extrapolate.py 2026-10-01/random > 2026-10-01/random/extrapolation.md
 ```
 
 Live pages change, so a rerun won't match exactly. Screenshots (`out*/shots/`) aren't committed.

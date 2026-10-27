@@ -1,0 +1,391 @@
+idx,rank,counters,page,gecko_vs_chromium,ff9426_vs_gecko,ff9426_vs_chromium,method,note
+1,500000,iframe,https://portail-reparateurs.ecosystem.eco/cgu,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+2,500000,iframe,https://www.reallygood.com.tw/newExam/inside?str=3741B6A66B1C6FB62C45BF17A3AC2EC6,no visible change,no visible change,no visible change,eye,"sidebar ads, view counter"
+4,1000000,iframe,https://martinique.catholique.fr/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+6,1000000,iframe,https://www.catholique-guadeloupe.org/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+7,5000000,iframe,https://boardwalkbeachhotel.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+8,5000000,iframe,https://eservice.elenger.lv/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+9,5000000,iframe,https://mualikefollow.com/service/facebook-services/like-post,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+10,5000000,iframe,https://pesantrenmaqi.net/program-online/,no visible change,no visible change,no visible change,triage,odd mode is one the hit category rules out (or one pair only); noise
+12,5000000,iframe,https://psychology.psiedu.ubbcluj.ro/ro/orar-consultatii,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+13,5000000,iframe,https://ptree.org/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+14,5000000,iframe,https://tharuvi.com/market/19/palmyra-sprouts-flour/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+15,5000000,iframe,https://uapi.biz/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+16,5000000,iframe,https://uapi.biz/sell-my-car,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+18,5000000,iframe,https://vmg.v-maarja.ee/vaike-maarja-gumnaasiumi-juhtkonna-infoleht-12-16-oktoober-2026/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+19,5000000,iframe,https://www.cntvb.ro/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+20,5000000,iframe,https://www.einfo.co.nz/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+21,5000000,iframe,https://www.einfo.co.nz/apple-iphone-13-128gb-blue-refurbished-very-good-39.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+25,5000000,iframe,https://www.pallavanlearningsystems.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+26,5000000,iframe,https://www.piripirireporter.com/noticia/porquinho-nasce-sem-os-olhos-e-com-malformacao-na-boca-em-piripiri,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+27,5000000,iframe,https://www.scnet.ai/,not assessable,not assessable,not assessable,auto,comparison visits timed out (detection retry hit sandbox)
+29,5000000,iframe,https://www.sisoft.com.tr/haber/page?lang=&dergi=&SYF=Detay&hb=2528,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+32,10000000,iframe,https://content.futureelectronics.com/semiconductor-and-component-innovation/strategies-for-design-resiliency-and-supply-chain-management-an-interview-with-todd-baker/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+33,10000000,iframe,https://hyperroute.org/reviews,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+35,10000000,iframe,https://lisaskinclinic.com/onlineappointment,no visible change,neutral,neutral,eye,same as top-100 sample 468 (lisaskinclinic booknmeet widget)
+36,10000000,iframe,https://saldorfske-sklepy.cz/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+37,10000000,iframe,https://saldorfske-sklepy.cz/nase-akce/svaty-martin-v-saldorfskych-sklepech,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+38,10000000,iframe,https://shashlik-beru.ru/jobs/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+39,10000000,iframe,https://sobercast.com/sober-cast-aa-alcoholics-anonymous-speaker-meeting-podcast,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+40,10000000,iframe,https://versionibus.altervista.org/la-fondazione-di-roma-e-i-suoi-primi-abitanti-traduzione-latino/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+41,10000000,iframe,https://w-styleshop.jp/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+42,10000000,iframe,https://www.bihariconnect.uk/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+43,10000000,iframe,https://www.dunas-travel.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+44,10000000,iframe,https://www.flachdachshop.de/anleitungen,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+45,10000000,iframe,https://www.mayurankfoods.com/home.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+46,10000000,iframe,https://www.novdenta.ru/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+48,10000000,iframe,https://www.pip-uum.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+51,10000000,iframe,https://www.sintemar.com/,no visible change,no visible change,no visible change,eye,slider
+52,10000000,iframe,https://www.srhnc.una.ac.cr/index.php,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+54,50000000,iframe,http://www.bdips.com/,no visible change,no visible change,no visible change,triage,odd mode is one the hit category rules out (or one pair only); noise
+55,50000000,iframe,http://www.bdips.com/index.html,no visible change,no visible change,no visible change,eye,ads
+56,50000000,iframe,http://www.torkartingowy.wodzislaw.pl/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+57,50000000,iframe,https://3ddesign.jp/showroom.htm,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+60,50000000,iframe,https://conner.nspgrealty.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+63,50000000,iframe,https://fafu.hu/hogyan-keszul-a-gyorshaz/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+64,50000000,iframe,https://hydrex-international.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+65,50000000,iframe,https://ibbz.co.nz/tax-debt-help.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+66,50000000,iframe,https://jesjalna.org/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+67,50000000,iframe,https://kabutolakenorman.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+68,50000000,iframe,https://kravmagaperu.com.pe/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+69,50000000,iframe,https://mancity.bg/,no visible change,worse,worse,recheck,"mancity.com/news in sandbox=""allow-same-origin"": noscript <img> thumbnail fallbacks become crest placeholders in C (as in the 2026-07-01 sample); in the recheck mancity.com served an ""unavailable"" page to the mode-0 load"
+70,50000000,iframe,https://ongthepsaigon.vn/,no visible change,no visible change,no visible change,eye,"animations, ticker"
+71,50000000,iframe,https://refinansirovanie-pomozhem.ru/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+72,50000000,iframe,https://revistas.utla.edu.sv/perspectiva/en/index,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+73,50000000,iframe,https://rippling.com.tw/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+74,50000000,iframe,https://welcome.gentivahs.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+75,50000000,iframe,https://www.2jakaya.com/search/label/%EA%B5%AD%EB%82%B4%20%EC%97%AC%ED%96%89,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+76,50000000,iframe,https://www.antiqueenginerebuilding.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+77,50000000,iframe,https://www.antiqueenginerebuilding.com/index.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+78,50000000,iframe,https://www.bihouse.co.jp/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+79,50000000,iframe,https://www.bmainternationalgroup.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+80,50000000,iframe,https://www.budgetglas.com/,no visible change,no visible change,no visible change,triage,odd mode is one the hit category rules out (or one pair only); noise
+81,50000000,iframe,https://www.careerjobsinternational.org/,no visible change,no visible change,no visible change,recheck,consent dialog and ads vary across loads in every mode
+82,50000000,iframe,https://www.comune.saleranosullambro.lo.it/it/news/sagra-del-ringraziamento-2026?type=1,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+83,50000000,iframe,https://www.crank-scrapers.com/What%20is%20a%20crank-scraper.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+84,50000000,iframe,https://www.darkmoonrisingpublications.com/bullyingandharassment.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+86,50000000,iframe,https://www.hideegoldmine.com/hidee.htm,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+89,50000000,iframe,https://www.nspgrealty.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+90,50000000,iframe,https://www.ompio.org/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+91,50000000,iframe,https://www.pasqualeclarizio.it/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+92,50000000,iframe,https://www.pasqualeclarizio.it/camminata-di-potenza-power-walking-o-al-fitwalking-combinato-con-elementi-di-corsa-davampiede-forefoot-running/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+93,50000000,iframe,https://www.procivarci.it/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+94,50000000,iframe,https://www.protestantsquartierlatin.net/100-raisons-d-aller-au-culte_a537.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+99,50000000,iframe,https://www.sinistrapercalenzano.it/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+106,1000000,XHR,https://cardmasters.co.nz/collections/frontpage/products/pre-release-pokemon-tcg-pitch-black-pre-release-event-ticket,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+111,1000000,XHR,https://www.lillarose.com/products/new-monica-4958,no visible change,no visible change,no visible change,triage,odd mode is one the hit category rules out (or one pair only); noise
+112,5000000,DOMParser XHR,https://agatools.com/products/mobile-van-oil-system-full-size,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+115,5000000,XHR,https://drtusafishing.com/products/tiny-klash-spare-parts-stock-tail,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+119,5000000,XHR,https://gifty.in.ua/catalog/pledi-ta-raneri,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+120,5000000,XHR,https://gs.kh.ua/catalog,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+121,5000000,DOMParser XHR,https://herbalapothecaryuk.com/products/capsicum-frutescens-cayenne-fruits-powder,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+122,5000000,DOMParser XHR,https://highspots.co.uk/products/preorder-hacksaw-jim-duggan-funko-pop-212-jsa-witnessed-autographed,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+123,5000000,XHR,https://home.ml.netbk.co.jp/app/inquiry,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+125,5000000,XHR,https://kytin.com/products/mensparasole,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+126,5000000,DOMParser XHR,https://motoland-dunkerque.fr/products/veste-rev-it-vertical-goretex,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+127,5000000,XHR,https://mtw.org/internships,no visible change,no visible change,no visible change,eye,hero video frame; no hits in this visit
+129,5000000,NoBrowsingContext XHR,https://ni-kyoto.nissan-dealer.jp/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+130,5000000,DOMParser XHR,https://nikol-verlag.de/products/bruder-grimm-kinder-und-hausmarchen-deutsche-sagen,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+131,5000000,DOMParser XHR,https://pisomaestro.cl/products/cubre-piso-evento,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+132,5000000,XHR,https://recreateclothing.co.nz/products/etta-reversible-dress-indigo,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+133,5000000,XHR,https://remmotorcycle.co/collections/new-products-1/products/inverted-fork-oil-seal-kit-pair,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+135,5000000,XHR,https://strykertrailers.com/collections/build-a-trailer,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+137,5000000,XHR,https://ukrinstal.com.ua/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+141,5000000,XHR,https://www.walkietalkiesa.co.za/products/sfe-s618-uhf-licence-free-portable-two-way-radio,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+142,5000000,DOMParser XHR,https://xado.de/products/atomex-multi-cleaner-gasoline,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+143,10000000,DOMParser XHR,https://chromavaults.myshopify.com/products/riftbound-league-of-legends-origins-booster-box,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+145,10000000,DOMParser XHR,https://coldys.com.au/products/180w-night-sabre-lightbar-942mm-37-straight,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+146,10000000,DOMParser XHR,https://covo.com.gt/products/sierra-circular-covo-4-1-2-f-4-pza,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+148,10000000,DOMParser XHR,https://dovoh.com/products/outdoor-laser-level-with-receiver-dovoh-h3-360g-kit,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+149,10000000,DOMParser XHR,https://esleadhotel-shop.com/en-auseu/products/ngoyaebisenbei,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+150,10000000,XHR,https://imvo.com.ua/produktsya/paletni-stelazhi,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+151,10000000,XHR,https://kellyscandy.com.au/products/caramel-fudge-pouch-180g,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+152,10000000,DOMParser XHR,https://knittygrittysyr.com/products/knit-a-box-of-christmas-socks,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+153,10000000,DOMParser XHR,https://kromood.com/products/black-afghan-thcx,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+154,10000000,DOMParser XHR,https://laterem.de/products/ke-22114,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+155,10000000,NoBrowsingContext XHR,https://nm-morioka.nissan-dealer.jp/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+157,10000000,NoBrowsingContext XHR,https://np-kumamoto.nissan-dealer.jp/,no visible change,no visible change,no visible change,triage,odd mode is one the hit category rules out (or one pair only); noise
+158,10000000,XHR,https://ns-nara.nissan-dealer.jp/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+159,10000000,XHR,https://otterpr.com/case-studies/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+161,10000000,DOMParser XHR,https://pokemena.com/products/japanese-list-pokemena-19,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+162,10000000,DOMParser XHR,https://premiumdnatoys.com/products/revenge-of-shinobi-joe-musashi-immaculate-collection-1-12-scale-action-figure,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+163,10000000,XHR,https://regattacraftmixers.com/products/classic-bermuda-stone-ginger-beer,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+168,10000000,DOMParser XHR,https://www.echoinox.com/products/jhs-at-mini-andy-timmons-signature-distortion,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+169,10000000,XHR,https://www.homes2sea.ca/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+170,10000000,DOMParser XHR,https://xn--kontormilj-9cb.dk/products/backapp-ergonomisk-stol-1,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+171,50000000,DOMParser XHR,https://alpineastro.com/products/baader-maxbright%C2%AE-ii-binoviewer-with-case,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+172,50000000,DOMParser XHR,https://apexfencingsupply.com.au/products/heat-soaked-balustrade-glass-w-875-1650mm,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+175,50000000,XHR,https://butter-shower.tistory.com/267,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+176,50000000,XHR,https://diia.avalon.com.ua/en,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+177,50000000,XHR,https://discountdtftransfers.com/products/build-a-dtf-gang-sheet-bags,no visible change,no visible change,no visible change,eye,YouTube thumbnail loading
+178,50000000,XHR,https://dropmetal.com/products/jhook,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+181,50000000,DOMParser XHR,https://farmanove.it/products/bayer-advantix-rosso-antiparassitario-cani-da-10kg-a-25kg-4-pipette-x-2-5ml,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+184,50000000,XHR,https://gubi-gubi.nl/products/first-experience-box,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+186,50000000,XHR,https://mbemag.com/articles/minority-owned-millennium-bank-opens-revitalized-bridgeport-banking-center-unveils-120-foot-community-mural/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+187,50000000,XHR,https://nn.ilpatio.ru/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+188,50000000,DOMParser XHR,https://petraroc.com/products/bkvm-hdsuv-black-lime-two-tone-deluxe-8-pocket-heavy-duty-surveyors-safety-vest,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+189,50000000,XHR,https://propizzaovens.com/products/alfa-classico-4-pizze,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+191,50000000,XHR,https://startprint.com.hk/products/pantum-cm2100adw-%E5%BD%A9%E8%89%B2%E5%A4%9A%E5%8A%9F%E8%83%BD%E9%90%B3%E5%B0%84%E6%89%93%E5%8D%B0%E6%A9%9F,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+192,50000000,XHR,https://thebearmountain.com/products/tbm-nalgene,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+193,50000000,DOMParser XHR,https://theoutdoorlivingexchange.com/products/hpc-47x25-phoenix-hammered-copper-elongated-fire-bowl-multiple-burner-ignition-options,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+195,50000000,XHR,https://www.aadyabazaar.com/collections/all-clothing,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+196,50000000,DOMParser XHR,https://www.cleglam.com/products/bubble-gold-swing-accent-chair-w-cushion,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+197,50000000,DOMParser XHR,https://www.justv4x4.com/products/8-2x6-5ft-foldable-vehicle-awning-aluminium-retractable,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+199,50000000,XHR,https://www.wowplace.com.ua/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+202,1000000,NoBrowsingContext,https://jp.deuscustoms.com/products/26fw-monument-coat-tan,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+203,1000000,NoBrowsingContext,https://miamiredhawks.com/api/v2/promotions/179/click?redirect=%2fsports%2f2026%2f8%2f20%2fgroup-sales,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+204,1000000,NoBrowsingContext,https://www.bonniechristine.com/startsimple,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+205,1000000,NoBrowsingContext,https://www.fullautoparts.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+206,1000000,NoBrowsingContext,https://www.serralheiro.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+208,5000000,DOMParser NoBrowsingContext,http://www.kbaboxing.co.kr/41377,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+209,5000000,NoBrowsingContext,https://corp.sbishinseibank.co.jp/ja/about/strategy.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+210,5000000,NoBrowsingContext,https://gomarquette.com/sports/2026/8/27/muticketcentral,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+211,5000000,NoBrowsingContext,https://loja.fazendabaoba.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+212,5000000,NoBrowsingContext,https://redstormsports.com/news/2026/10/12/womens-volleyball-volleyball-garners-pair-of-big-east-honor-roll-selections,no visible change,no visible change,no visible change,triage,odd mode is one the hit category rules out (or one pair only); noise
+213,5000000,NoBrowsingContext,https://sacredheartpioneers.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+214,5000000,NoBrowsingContext,https://simpli.fi/contact,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+215,5000000,NoBrowsingContext,https://siusalukis.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+216,5000000,NoBrowsingContext,https://slcpl.na2.iiivega.com/search?query=&searchType=everything&pageSize=10&mode=advanced,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+217,5000000,NoBrowsingContext,https://sweetdelight.co.kr/product/%EB%8F%84%EB%A5%B4%ED%8B%B0-%ED%94%84%EB%9D%BC%ED%95%98-%EC%B4%88%EC%BD%9C%EB%A6%BF-%EC%8A%AC%EB%9D%BC%EC%9D%B4%EC%8A%A4-350g/53/category/58/display/1/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+218,5000000,NoBrowsingContext,https://upstatespartans.com/news/2026/10/13/womens-golf-spartans-wrap-up-play-at-haskins-intercollegiate,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+219,5000000,NoBrowsingContext,https://wan-sign.wanbishi.co.jp/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+220,5000000,NoBrowsingContext,https://www.1media.my/2026/08/jika-ada-bukti-kecurian-saya-orang.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+221,5000000,NoBrowsingContext,https://www.cestaslara.com.br/cafe-da-manha,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+222,5000000,NoBrowsingContext,https://www.ervadoceerva.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+223,5000000,NoBrowsingContext,https://www.essencesexshop.com.br/cosmeticos,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+224,5000000,NoBrowsingContext,https://www.hegapack.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+225,5000000,NoBrowsingContext,https://www.istanbuljewelryshow.com/exhibit/book-your-stand/march-show/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+226,5000000,NoBrowsingContext,https://www.kaninotatsujin.com/line%e3%81%a7%e3%81%8a%e5%8f%8b%e9%81%94%e3%81%ab%e3%81%aa%e3%82%8b%e3%81%a8%e3%81%8a%e5%be%97%ef%bc%81%e7%b4%b9%e4%bb%8b%e3%81%99%e3%82%8b%e3%81%a8%e3%81%95%e3%82%89%e3%81%ab%e3%81%8a%e5%be%97/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+227,5000000,NoBrowsingContext,https://www.kyototo.jp/SHOP/147558/294184/list.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+228,5000000,NoBrowsingContext,https://www.lojaplugt.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+229,5000000,NoBrowsingContext,https://www.lojasheep.com.br/loja/busca.php?loja=1371372&palavra_busca=mold&order=2&categoria=,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+230,5000000,NoBrowsingContext,https://www.lojaspaguemenos.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+231,5000000,NoBrowsingContext,https://www.mastela.com.br/bercos-automaticos/berco-sensor-de-movimento-balanco-automatico-com-timer-e-musica-sense-plus-bege,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+232,5000000,NoBrowsingContext,https://www.melhorprecoautopecas.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+233,5000000,NoBrowsingContext,https://www.motosports.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+235,5000000,NoBrowsingContext,https://www.rp3shop.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+236,5000000,NoBrowsingContext,https://www.sasantoantonio.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+237,5000000,NoBrowsingContext,https://www.sonihospitals.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+238,5000000,NoBrowsingContext,https://www.spguitarshop.com.br/loja/busca.php?loja=1294910&palavra_busca=floyd+rose,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+239,5000000,NoBrowsingContext,https://www.timbobikestore.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+240,5000000,NoBrowsingContext,https://www.toralcomercio.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+241,5000000,NoBrowsingContext,https://www.trepis.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+242,5000000,NoBrowsingContext,https://www.veganoshoes.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+243,10000000,NoBrowsingContext,https://biblioteca.camaramedellin.com.co/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+244,10000000,NoBrowsingContext,https://first-sovereign.jp/products/1999diana70-sv,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+245,10000000,NoBrowsingContext,https://i-st.shop/device.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+247,10000000,NoBrowsingContext,https://ledsigncity.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+249,10000000,DOMParser NoBrowsingContext,https://puppyluv.jp/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+250,10000000,DOMParser NoBrowsingContext,https://q-sweets.co.jp/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+252,10000000,NoBrowsingContext,https://shop.yller.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+253,10000000,NoBrowsingContext,https://sokolatapatisserie.gr/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+254,10000000,NoBrowsingContext,https://store.orderofman.com/products/order-of-man-annual-battle-planner,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+255,10000000,NoBrowsingContext,https://us.hazera.com/radish-updates-from-the-west/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+256,10000000,NoBrowsingContext,https://www.abriltratorpecas.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+257,10000000,NoBrowsingContext,https://www.adrialaboratorios.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+258,10000000,NoBrowsingContext,https://www.complinecompressores.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+259,10000000,NoBrowsingContext,https://www.degusti.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+260,10000000,NoBrowsingContext,https://www.dermpathatlanta.com/contact-us?utm_source=widget-popup&utm_medium=website&utm_campaign=popup,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+261,10000000,NoBrowsingContext,https://www.eurekapaint.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+262,10000000,NoBrowsingContext,https://www.florestasdafuturo.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+263,10000000,NoBrowsingContext,https://www.instafire.com/products/ember-oven,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+264,10000000,NoBrowsingContext,https://www.lojacafecaicara.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+265,10000000,DOMParser NoBrowsingContext,https://www.madogatari.jp/,no visible change,no visible change,no visible change,recheck,intro animation timing; identical in recheck
+266,10000000,NoBrowsingContext,https://www.manbobombas.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+267,10000000,NoBrowsingContext,https://www.multfix.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+268,10000000,NoBrowsingContext,https://www.pharmapackeurope.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+269,10000000,NoBrowsingContext,https://www.quemamadiagrama.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+270,10000000,NoBrowsingContext,https://www.reidosesportes.com/chuteiras,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+271,10000000,NoBrowsingContext,https://www.relojoariamaxclock.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+273,10000000,NoBrowsingContext,https://www.santabarbarawedding.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+274,10000000,NoBrowsingContext,https://www.shaverhillmaple.com/products/maple-hot-sauce,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+275,10000000,NoBrowsingContext,https://www.toquesensato.com.br/sex-shop-sensual,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+276,10000000,NoBrowsingContext,https://www.toromotos.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+277,50000000,NoBrowsingContext,http://bamboo-bar.air-nifty.com/,not assessable,not assessable,not assessable,auto,load error: Message: 216109 exceeds the maximum allowed screenshot height of 65535 pixels
+278,50000000,NoBrowsingContext,https://anaamalaistoyotamadurai.com/showroom/innova-crysta/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+279,50000000,NoBrowsingContext,https://fdc-rokko.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+280,50000000,NoBrowsingContext,https://gridleyms.tusd1.org/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+281,50000000,NoBrowsingContext,https://loja.emporiodocerrado.org.br/castanhas,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+282,50000000,NoBrowsingContext,https://mongatoyota.in/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+283,50000000,NoBrowsingContext,https://usa1shot.com/products/new-shepherd-gxf2-folding-pistol-rest-for-glock-s-w-oa-2311-walther-ruger-colt-and-many-more-copy,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+284,50000000,NoBrowsingContext,https://www.anatomicallab.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+285,50000000,NoBrowsingContext,https://www.castle-toyota.com/showroom/innova-crysta/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+286,50000000,NoBrowsingContext,https://www.crecafe.co.jp/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+287,50000000,NoBrowsingContext,https://www.generalclean.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+288,50000000,NoBrowsingContext,https://www.hapbox.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+289,50000000,NoBrowsingContext,https://www.kometa.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+291,50000000,NoBrowsingContext,https://www.lojacarasdositio.com.br/cuidados-com-a-casa/sabonetes-liquidos/sabonete-liquido-livro-antigo-1980-perolado-60ml,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+292,50000000,NoBrowsingContext,https://www.madinta.sch.id/2024/04/juknis-porsadin-2024.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+293,50000000,NoBrowsingContext,https://www.naturefoodtech.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+294,50000000,NoBrowsingContext,https://www.organicproducesummit.com/notify-me/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+295,50000000,NoBrowsingContext,https://www.papelariacgc.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+296,50000000,NoBrowsingContext,https://www.papillon.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+297,50000000,DOMParser NoBrowsingContext,https://www.ricordi-sfera.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+298,50000000,NoBrowsingContext,https://www.warn.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+299,50000000,NoBrowsingContext,https://www.xstallone.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+300,500000,template,https://v3.ainzscans01.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+301,500000,template,https://www.macu.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+302,500000,template,https://www.paxassistance.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+304,500000,template,https://www.telas.com.ar/productos/tusor-blanco/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+305,1000000,template,https://metodoformacion.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+306,1000000,template,https://www.centsys.co.za/myinstaller/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+307,1000000,template,https://www.contractorsdirect.com/products/montolit-dna-scxs-silent-blade?utm_content=montolit-scxs-dna-diamond-blade,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+308,1000000,template,https://www.lustresgenesis.com.br/linha-sarvah/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+310,5000000,template,https://augment.org/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+311,5000000,template,https://claymoreoutdoor.com/products/3facepro-l,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+312,5000000,template,https://coor.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+313,5000000,template,https://cube.ghe.com/login?admin=true,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+314,5000000,template,https://fr.sfs.com/cabrl,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+315,5000000,template,https://giipet.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+316,5000000,template,https://indususedcars.com/,no visible change,no visible change,no visible change,triage,odd mode is one the hit category rules out (or one pair only); noise
+317,5000000,template,https://isotope.com/,no visible change,no visible change,no visible change,triage,odd mode is one the hit category rules out (or one pair only); noise
+318,5000000,template,https://kalf.com.br/categoria/selins-e-bancos,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+320,5000000,template,https://loja.fw3capacetes.com.br/produtos/capacete-fw3-gtx-fox-com-oculos-interno/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+323,5000000,template,https://strykerttops.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+324,5000000,template,https://vacationeer.com/free-quote/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+325,5000000,template,https://vuduloja.com/cupons/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+326,5000000,template,https://www.gogoargentina.com/grabados/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+328,5000000,template,https://www.mambanegrastore.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+330,5000000,template,https://www.rvconnections.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+331,5000000,template,https://www.slowplay.store/products/godel-ceramic-poker-plaques,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+332,10000000,template,https://boundlessbookpublishers.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+333,10000000,template,https://buzzvil.career.greetinghr.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+334,10000000,template,https://coniferis-retreat.pynbooking.direct/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+335,10000000,template,https://dalba.career.greetinghr.com/en/apply,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+336,10000000,template,https://eletronicatranstel.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+337,10000000,template,https://evasxcincodemayo.com/buy-e-gift-cards,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+338,10000000,template,https://fourcompany.career.greetinghr.com/ko,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+339,10000000,template,https://hydrapres.pl/en/contact,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+341,10000000,template,https://mazur-nowak.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+342,10000000,template,https://naturalcandybites.com/mayoristas-y-distribuidores/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+343,10000000,template,https://pickob.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+346,10000000,template,https://savikalpa.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+347,10000000,template,https://seniorwalkfitde.com/pages/kontaktieren-sie-uns,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+348,10000000,template,https://sever-group.ru/,no visible change,no visible change,no visible change,eye,slider
+350,10000000,template,https://simplesoulboutique.com/collections/new-arrivals,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+352,10000000,template,https://tienda.id-indumentaria.com.ar/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+353,10000000,template,https://toastfinefoodandcoffee.com/menu,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+354,10000000,template,https://www.idahounited.org/find-your-car,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+355,10000000,template,https://www.katikaia.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+356,10000000,template,https://www.melissahurtado.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+358,10000000,template,https://www.usesavu.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+359,50000000,template,https://antenna.career.greetinghr.com/ko/porcess,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+360,50000000,template,https://barberclan770.com/categoria/maquinas-patilleras,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+362,50000000,template,https://career.makestarcorp.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+363,50000000,template,https://chai.career.greetinghr.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+364,50000000,template,https://cjmarquitectos.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+366,50000000,template,https://core-marine.com/core-markets,no visible change,no visible change,no visible change,triage,odd mode is one the hit category rules out (or one pair only); noise
+367,50000000,DOMParser template,https://drawingrocks.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+368,50000000,template,https://equity.wwu.edu/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+371,50000000,template,https://generator-krd.ru/catalog/dizelnye-generatory,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+372,50000000,template,https://getwild.com.ar/productos/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+373,50000000,template,https://hirose.career.greetinghr.com/ko/guide,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+374,50000000,template,https://honmoons.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+376,50000000,template,https://jobs.choosemketech.org/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+377,50000000,template,https://kiini.com/products/gift-card,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+379,50000000,template,https://olixpharma.career.greetinghr.com/ko,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+384,50000000,template,https://roadtouk.com/guides,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+385,50000000,template,https://seaandsky.bosaproperties.com/Community,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+386,50000000,template,https://sipandsimmer.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+388,50000000,template,https://taelimlawyer.co.kr/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+389,50000000,template,https://tetsumenhawaii.com/order,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+390,50000000,template,https://traveltrek.co.uk/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+392,50000000,template,https://www.autenticaretro.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+395,50000000,template,https://www.fagronsterile.be/nl-be/over-ons,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+396,50000000,template,https://www.moradamadalena.com.br/search/?q=BRANDANI,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+397,50000000,template,https://www.musixsoftwares.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+398,50000000,template,https://www.reduma.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+399,50000000,template,https://www.slopetrotter.dk/search,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+401,50000,DOMParser,https://somosrex.com/metodos-de-entrega,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+402,100000,DOMParser,https://www.suzukacircuit.jp/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+403,500000,DOMParser,https://billetterie.abrugby.fr/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+404,500000,DOMParser,https://firangiyarn.com/collections/mens-kurtas,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+405,500000,DOMParser,https://gatherroundhomeschool.com/pages/samples,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+406,500000,DOMParser,https://www.epoi-jp.com/c/collection/rits,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+407,500000,DOMParser,https://www.savotta.fi/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+408,500000,DOMParser,https://www.simek.eu/kupte-sadu-sverek-irwin-a-ziskejte-cenne-darky/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+409,1000000,DOMParser,https://merezha-prava.ua/direction/viyskovi-pensiyi,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+410,1000000,DOMParser,https://stevemadden.nl/collections/wild-textures,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+411,1000000,DOMParser,https://usefusion.com.br/collections/sale,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+412,1000000,DOMParser,https://www.merchant1948.com.au/collections/25-off-womens-sneakers,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+413,1000000,DOMParser,https://www.spopia-shiratori.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+414,5000000,DOMParser,https://alphaneontm.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+415,5000000,DOMParser,https://canadaweldingsupply.com/collections/mig-welders-gmaw/products/miller-multimatic%C2%AE-255-multiprocess-welding-machine,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+416,5000000,DOMParser,https://crepprotect.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+417,5000000,DOMParser,https://en.sergent-major.com/collections/journees-sergent-major,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+418,5000000,DOMParser,https://erectus.co.kr/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+419,5000000,DOMParser,https://essentialbaking.com/pages/where-to-buy,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+420,5000000,DOMParser,https://filmelange.com/products/burl-bt-%E3%83%90%E3%83%BC%E3%83%AB-campione-urage-hidamari-rose-hip,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+421,5000000,DOMParser,https://flairfragrances.it/products/profumo-flair-personalizzato,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+422,5000000,DOMParser,https://gemer.jp/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+423,5000000,DOMParser,https://help.harmanpro.com/en_US/bss,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+424,5000000,DOMParser,https://kovalcustoms.com/products/haft-rysunku-dziecka-ze-zdjecia,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+425,5000000,DOMParser,https://lalavie.jp/c/skincare/LOL001000,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+427,5000000,DOMParser,https://mckees37.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+428,5000000,DOMParser,https://muscle-house.de/products/wispy-zero-sauce-pick-und-mix-3-stueck,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+429,5000000,DOMParser,https://oslofreedomforum.com/event/oslo-freedom-forum-2027/buy-your-ticket-for-off-2027/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+430,5000000,DOMParser,https://outcomes.edu.gov.il/search-catalog,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+431,5000000,DOMParser,https://perfectstores-eg.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+432,5000000,DOMParser,https://perfectstores-eg.com/collections/perfect-quality,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+433,5000000,DOMParser,https://ray-jules.com/products/fruity-franny-ethiopie,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+434,5000000,DOMParser,https://shop.kanezaki.co.jp/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+435,5000000,DOMParser,https://velvetnoireboutique.com/live,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+436,5000000,DOMParser,https://wenr.wes.org/country-profiles,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+437,5000000,DOMParser,https://www.atomlabel.co.uk/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+438,5000000,DOMParser,https://www.blissfulnights.com/collections/adjustable-bed-bases,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+440,5000000,DOMParser,https://www.ht-dron.pl/akcesoria-fpv,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+441,5000000,DOMParser,https://www.informdirect.co.uk/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+442,5000000,DOMParser,https://www.isginc.com/client-experience,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+443,5000000,DOMParser,https://www.maisoncanau.com/my/wishlist,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+444,5000000,DOMParser,https://www.mountainschool.org/inquire,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+445,5000000,DOMParser,https://www.proprofiky.cz/benzinova-pila-husqvarna-120-14--hobby/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+446,5000000,DOMParser,https://www.puelladufte.at/waschmittel-blatter/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+447,5000000,DOMParser,https://www.storypeople.com/pages/about-us,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+448,5000000,DOMParser,https://www.usukawa.com/c/kurumiyubeshi_mochizuri,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+450,10000000,DOMParser,https://au.top5paidsurveys.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+451,10000000,DOMParser,https://celebrityinkautographs.co.uk/collections/doctor-who,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+452,10000000,DOMParser,https://cplace.co.il/products/apple-iphone-18-pro,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+453,10000000,DOMParser,https://dq2wdqw556dqw3.com/Promotion,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+454,10000000,DOMParser,https://granaryleith.co.uk/book-now/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+455,10000000,DOMParser,https://gsa.uk.com/developing-careers/professional-development/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+456,10000000,DOMParser,https://insplay.lv/,no visible change,no visible change,no visible change,triage,odd mode is one the hit category rules out (or one pair only); noise
+457,10000000,DOMParser,https://kagrc.go.ke/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+458,10000000,DOMParser,https://ojs.q2lii.id/index.php/index/index,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+459,10000000,DOMParser,https://petehealth.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+460,10000000,DOMParser,https://pt.fairtex.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+461,10000000,DOMParser,https://scandesign.nl/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+462,10000000,DOMParser,https://sklep.wimar.net/pl_PL/kategoria/domyslny/produkty/przycinanie-roslin,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+463,10000000,DOMParser,https://solliestudio.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+464,10000000,DOMParser,https://tentorexil.store/product/%ED%85%90%ED%86%A0%EB%A0%89%EC%8B%A4-tentorexil-%EA%B3%B5%EC%8B%9D-%EC%B5%9C%EC%A0%80%EA%B0%80-%EB%A7%81%ED%81%AC/27/category/42/display/1/,not assessable,not assessable,not assessable,auto,load error: Message: 86425 exceeds the maximum allowed screenshot height of 65535 pixels
+466,10000000,DOMParser,https://wallderm.com/cosmetic.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+467,10000000,DOMParser,https://www.bevandecuni.it/academy,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+468,10000000,DOMParser,https://www.bmcontainers.nl/3m3-container-puin.html,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+469,10000000,DOMParser,https://www.caclasses.in/products/All%20Courses%3AOur%20Courses,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+470,10000000,DOMParser,https://www.canclinic.com/conditions,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+471,10000000,DOMParser,https://www.crioullo.com/crioullo-mecanismo-de-elevacao-de-parrilla,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+472,10000000,DOMParser,https://www.homeschools.org/contact-us/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+473,10000000,DOMParser,https://www.hyperchargehealth.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+474,10000000,DOMParser,https://www.janickiresidential.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+475,10000000,DOMParser,https://www.reimssantetravail.fr/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+476,10000000,DOMParser,https://www.screenlux.no/products/zip-screen-configurator,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+477,10000000,DOMParser,https://www.thefuturestore.co/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+478,10000000,DOMParser,https://www.varangistylestudio.com/collections/the-diwali-edit,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+479,10000000,DOMParser,https://xaviersaints.org/live,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+480,50000000,DOMParser,https://cosmadeals.com/products/tiki-factory-hair-locking-gel-400ml,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+481,50000000,DOMParser,https://cpcbatteries.co.uk/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+482,50000000,DOMParser,https://flux.agency/work,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+483,50000000,DOMParser,https://inlinemanual.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+484,50000000,DOMParser,https://lululemon.supplierone.co/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+485,50000000,DOMParser,https://nazdrowko.mobilnycatering.pl/panelklienta,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+486,50000000,DOMParser,https://pcritp.me/resources,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+487,50000000,DOMParser,https://smashhouse.us/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+488,50000000,DOMParser,https://streettechwheels.com/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+489,50000000,DOMParser,https://www.agencecardeal.fr/achat,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+490,50000000,DOMParser,https://www.cosatto.se/collections/sale,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+491,50000000,DOMParser,https://www.goalf.de/pages/kontakt,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+492,50000000,DOMParser,https://www.idoctor.sk/servis-pocitacov/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+493,50000000,DOMParser,https://www.jenniary.kr/index.html,not assessable,not assessable,not assessable,auto,load error: Message: unexpected end of hex escape at line 1 column 6081
+494,50000000,DOMParser,https://www.kotilab.fi/terveyspaketit,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+496,50000000,DOMParser,https://www.resbrasil.com.br/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+498,50000000,DOMParser,https://www.tri-wall.co.uk/,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise
+499,50000000,DOMParser,https://zivvys.com/collections/nut-butters,no visible change,no visible change,no visible change,auto,all pairs within A vs A2 noise

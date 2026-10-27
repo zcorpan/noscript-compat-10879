@@ -1,5 +1,9 @@
 .venv/
 out*/shots/
+2026-10-01/out*/shots/
+2026-10-01/random/out*/shots/
 __pycache__/
 *.log
 out/recheck/*.m*r*.png
+2026-10-01/out/recheck/*.m*r*.png
+2026-10-01/random/out/recheck/*.m*r*.png
