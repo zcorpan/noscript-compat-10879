@@ -2,3 +2,4 @@
 out*/shots/
 __pycache__/
 *.log
+out/recheck/*.m*r*.png
