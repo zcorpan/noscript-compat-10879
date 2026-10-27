@@ -1,0 +1,16 @@
+@media (scripting): true
+createContextualFragment: T "<b>x</b> &amp;"
+createHTMLDocument innerHTML: T "&lt;b&gt;x&lt;/b&gt; &amp;amp;"
+createHTMLDocument write: T "&lt;b&gt;x&lt;/b&gt; &amp;amp;"
+div.innerHTML: T "<b>x</b> &amp;"
+DOMParser doc innerHTML: T "&lt;b&gt;x&lt;/b&gt; &amp;amp;"
+DOMParser: M "<b>x</b> &amp;"
+parseHTMLUnsafe: M "<b>x</b> &amp;"
+sandbox iframe @media (scripting): false
+sandbox iframe noscript display: inline
+sandbox iframe parse: M "<b>shown-noscript</b>"
+static: T "<b>x</b> &amp;"
+template-content div.innerHTML: T "&lt;b&gt;x&lt;/b&gt; &amp;amp;"
+template.innerHTML: T "&lt;b&gt;x&lt;/b&gt; &amp;amp;"
+template.setHTMLUnsafe: T "&lt;b&gt;x&lt;/b&gt; &amp;amp;"
+XHR responseXML: M "<b>x</b> &amp;"

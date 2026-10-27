@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>noscript scripting flag per parse entry point</title>
+<style>iframe { width: 300px; height: 60px; border: 1px solid; }</style>
+<p>Static: <noscript id="static"><b>x</b> &amp;</noscript></p>
+<iframe id="sbx" sandbox="allow-same-origin" srcdoc="<p>before<noscript><b>shown-noscript</b></noscript>after"></iframe>
+<iframe id="sbx2" sandbox srcdoc="<p>before<noscript><b>shown-noscript</b></noscript>after"></iframe>
+<pre id="out"></pre>
+<script>
+const MARKUP = "<noscript><b>x</b> &amp;</noscript>";
+const DOC = "<body>" + MARKUP;
+const results = {};
+function classify(root) {
+  const ns = root.querySelector("noscript");
+  if (!ns) return "none";
+  const kind = ns.firstElementChild ? "M" : "T";
+  return `${kind} ${JSON.stringify(ns.innerHTML)}`;
+}
+function run(name, f) {
+  try { results[name] = f(); } catch (e) { results[name] = "error " + e; }
+}
+run("static", () => classify(document));
+run("div.innerHTML", () => { const d = document.createElement("div"); d.innerHTML = MARKUP; return classify(d); });
+run("template.innerHTML", () => { const t = document.createElement("template"); t.innerHTML = MARKUP; return classify(t.content); });
+run("template.setHTMLUnsafe", () => { const t = document.createElement("template"); t.setHTMLUnsafe(MARKUP); return classify(t.content); });
+run("template-content div.innerHTML", () => {
+  const t = document.createElement("template");
+  const d = t.content.ownerDocument.createElement("div");
+  t.content.appendChild(d);
+  d.innerHTML = MARKUP;
+  return classify(d);
+});
+run("createHTMLDocument innerHTML", () => { const doc = document.implementation.createHTMLDocument(""); doc.body.innerHTML = MARKUP; return classify(doc); });
+run("createHTMLDocument write", () => { const doc = document.implementation.createHTMLDocument(""); doc.open(); doc.write(DOC); doc.close(); return classify(doc); });
+run("DOMParser", () => classify(new DOMParser().parseFromString(DOC, "text/html")));
+run("DOMParser doc innerHTML", () => { const doc = new DOMParser().parseFromString("", "text/html"); doc.body.innerHTML = MARKUP; return classify(doc); });
+run("parseHTMLUnsafe", () => Document.parseHTMLUnsafe ? classify(Document.parseHTMLUnsafe(DOC)) : "unsupported");
+run("createContextualFragment", () => { const r = document.createRange(); r.selectNode(document.body); return classify(r.createContextualFragment(MARKUP)); });
+function xhr() {
+  return new Promise(resolve => {
+    const x = new XMLHttpRequest();
+    x.open("GET", URL.createObjectURL(new Blob([DOC], { type: "text/html" })));
+    x.responseType = "document";
+    x.onload = () => resolve(classify(x.responseXML));
+    x.onerror = () => resolve("error");
+    x.send();
+  });
+}
+window.sanityDone = (async () => {
+  results["XHR responseXML"] = await xhr();
+  await new Promise(r => { if (document.readyState === "complete") r(); else addEventListener("load", r); });
+  const sdoc = document.getElementById("sbx").contentDocument;
+  results["sandbox iframe parse"] = classify(sdoc);
+  const sns = sdoc.querySelector("noscript");
+  results["sandbox iframe noscript display"] = sdoc.defaultView.getComputedStyle(sns).display;
+  results["sandbox iframe @media (scripting)"] = sdoc.defaultView.matchMedia("(scripting)").matches;
+  results["@media (scripting)"] = matchMedia("(scripting)").matches;
+  document.getElementById("out").textContent = Object.entries(results).map(([k, v]) => `${k}: ${v}`).join("\n");
+  return results;
+})();
+</script>

@@ -1,0 +1,405 @@
+diff --git a/dom/base/DOMParser.cpp b/dom/base/DOMParser.cpp
+index 2d596ee0740c..195506ddc7ef 100644
+--- a/dom/base/DOMParser.cpp
++++ b/dom/base/DOMParser.cpp
+@@ -70,7 +70,9 @@ already_AddRefed<Document> DOMParser::ParseFromStringInternal(
+       document->ForceSkipDTDSecurityChecks();
+     }
+ 
+-    nsresult rv = nsContentUtils::ParseDocumentHTML(aStr, document, false);
++    nsresult rv = nsContentUtils::ParseDocumentHTML(
++        aStr, document, false, nullptr,
++        nsContentUtils::SanitizerMode::Unsafe, "DOMParser");
+     if (NS_WARN_IF(NS_FAILED(rv))) {
+       aRv.Throw(rv);
+       return nullptr;
+diff --git a/dom/base/Document.cpp b/dom/base/Document.cpp
+index 3ed5f2432e9a..323fcacefea4 100644
+--- a/dom/base/Document.cpp
++++ b/dom/base/Document.cpp
+@@ -22115,7 +22115,7 @@ already_AddRefed<Document> Document::ParseHTMLUnsafe(
+       *compliantString, doc,
+       /* aScriptingEnabledForNoscriptParsing */ false,
+       sanitizeWhileParsing ? sanitizer.get() : nullptr,
+-      nsContentUtils::SanitizerMode::Unsafe);
++      nsContentUtils::SanitizerMode::Unsafe, "parseHTMLUnsafe");
+   if (aError.Failed()) {
+     return nullptr;
+   }
+@@ -22166,7 +22166,7 @@ already_AddRefed<Document> Document::ParseHTML(GlobalObject& aGlobal,
+   aError = nsContentUtils::ParseDocumentHTML(
+       aHTML, doc, /* aScriptingEnabledForNoscriptParsing */ false,
+       sanitizeWhileParsing ? sanitizer.get() : nullptr,
+-      nsContentUtils::SanitizerMode::Safe);
++      nsContentUtils::SanitizerMode::Safe, "parseHTMLUnsafe");
+   if (aError.Failed()) {
+     return nullptr;
+   }
+diff --git a/dom/base/nsContentUtils.cpp b/dom/base/nsContentUtils.cpp
+index e8ad7e7fb937..974ab9ab0b4c 100644
+--- a/dom/base/nsContentUtils.cpp
++++ b/dom/base/nsContentUtils.cpp
+@@ -7200,11 +7200,24 @@ nsresult nsContentUtils::ParseFragmentHTML(
+   return rv;
+ }
+ 
++/* static */
++bool nsContentUtils::NoscriptScriptingFlag(const Document* aDoc,
++                                           bool aCurrent) {
++  switch (StaticPrefs::dom_html_parser_noscript_mode()) {
++    case 1:
++      return aDoc && aDoc->IsScriptEnabled();
++    case 2:
++      return Preferences::GetBool("javascript.enabled", true);
++    default:
++      return aCurrent;
++  }
++}
++
+ /* static */
+ nsresult nsContentUtils::ParseDocumentHTML(
+     const nsAString& aSourceBuffer, Document* aTargetDocument,
+     bool aScriptingEnabledForNoscriptParsing, Sanitizer* aSanitizer,
+-    SanitizerMode aSanitizerMode) {
++    SanitizerMode aSanitizerMode, const char* aNoscriptLogCategory) {
+   MOZ_ASSERT(!aSanitizer ||
+              StaticPrefs::dom_security_sanitizer_while_parsing());
+   if (nsContentUtils::sFragmentParsingActive) {
+@@ -7219,6 +7232,7 @@ nsresult nsContentUtils::ParseDocumentHTML(
+   }
+   nsresult rv = sHTMLFragmentParser->ParseDocument(
+       aSourceBuffer, aTargetDocument, aScriptingEnabledForNoscriptParsing,
++      aNoscriptLogCategory,
+       aSanitizer, aSanitizerMode);
+   return rv;
+ }
+@@ -11627,7 +11641,8 @@ static inline bool ShouldEscape(nsIContent* aParent) {
+     for (auto& nonEscapingElement : nonEscapingElements) {
+       if (tag == nonEscapingElement) {
+         if (MOZ_UNLIKELY(tag == nsGkAtoms::noscript) &&
+-            MOZ_UNLIKELY(!aParent->OwnerDoc()->IsScriptEnabled())) {
++            MOZ_UNLIKELY(!nsContentUtils::NoscriptScriptingFlag(
++                aParent->OwnerDoc(), aParent->OwnerDoc()->IsScriptEnabled()))) {
+           return true;
+         }
+         return false;
+diff --git a/dom/base/nsContentUtils.h b/dom/base/nsContentUtils.h
+index 15d2a6ece167..424153eb08a9 100644
+--- a/dom/base/nsContentUtils.h
++++ b/dom/base/nsContentUtils.h
+@@ -2102,7 +2102,12 @@ class nsContentUtils {
+       const nsAString& aSourceBuffer, Document* aTargetDocument,
+       bool aScriptingEnabledForNoscriptParsing,
+       mozilla::dom::Sanitizer* aSanitizer = nullptr,
+-      SanitizerMode aSanitizerMode = SanitizerMode::Unsafe);
++      SanitizerMode aSanitizerMode = SanitizerMode::Unsafe,
++      const char* aNoscriptLogCategory = "parseDocument");
++
++  // Scripting flag for noscript parsing and serialization per
++  // dom.html_parser.noscript_mode; aCurrent is the mode 0 value.
++  static bool NoscriptScriptingFlag(const Document* aDoc, bool aCurrent);
+ 
+   /**
+    * Converts HTML source to plain text by parsing the source and using the
+diff --git a/dom/serializers/nsHTMLContentSerializer.cpp b/dom/serializers/nsHTMLContentSerializer.cpp
+index 540a8521e5d1..b266c85cd2e6 100644
+--- a/dom/serializers/nsHTMLContentSerializer.cpp
++++ b/dom/serializers/nsHTMLContentSerializer.cpp
+@@ -236,7 +236,8 @@ nsHTMLContentSerializer::AppendElementStart(Element* aElement,
+   if (ns == kNameSpaceID_XHTML &&
+       (name == nsGkAtoms::script || name == nsGkAtoms::style ||
+        (name == nsGkAtoms::noscript &&
+-        aElement->OwnerDoc()->IsScriptEnabled()) ||
++        nsContentUtils::NoscriptScriptingFlag(
++            aElement->OwnerDoc(), aElement->OwnerDoc()->IsScriptEnabled())) ||
+        name == nsGkAtoms::noframes)) {
+     ++mDisableEntityEncoding;
+   }
+@@ -264,7 +265,8 @@ nsHTMLContentSerializer::AppendElementEnd(Element* aElement,
+   if (ns == kNameSpaceID_XHTML &&
+       (name == nsGkAtoms::script || name == nsGkAtoms::style ||
+        (name == nsGkAtoms::noscript &&
+-        aElement->OwnerDoc()->IsScriptEnabled()) ||
++        nsContentUtils::NoscriptScriptingFlag(
++            aElement->OwnerDoc(), aElement->OwnerDoc()->IsScriptEnabled())) ||
+        name == nsGkAtoms::noframes)) {
+     --mDisableEntityEncoding;
+   }
+diff --git a/layout/style/res/html.css b/layout/style/res/html.css
+index eb392550e42d..8c1b5fb0f4e2 100644
+--- a/layout/style/res/html.css
++++ b/layout/style/res/html.css
+@@ -1005,6 +1005,11 @@ slot {
+ }
+ 
+ /* Hide noscript elements if scripting is enabled */
++@media -moz-pref("dom.html_parser.noscript_mode", 2) {
++  noscript {
++    display: none !important;
++  }
++}
+ @media (scripting) {
+   noscript {
+     display: none !important;
+diff --git a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
+index 9e959c80c7c0..dcd80b2df881 100644
+--- a/modules/libpref/init/StaticPrefList.yaml
++++ b/modules/libpref/init/StaticPrefList.yaml
+@@ -5670,6 +5670,14 @@
+   value: false
+   mirror: always
+ 
++# 0: current behavior for the HTML parser's scripting flag and noscript
++# serialization. 1: Chromium-like (off for any document without a
++# script-enabled window). 2: follow only the browser-wide JS setting.
++- name: dom.html_parser.noscript_mode
++  type: RelaxedAtomicInt32
++  value: 0
++  mirror: always
++
+ - name: dom.headingoffset.enabled
+   type: RelaxedAtomicBool
+   value: false
+diff --git a/parser/html/nsHtml5Parser.cpp b/parser/html/nsHtml5Parser.cpp
+index 132f7da4416c..d2eb5bbc8089 100644
+--- a/parser/html/nsHtml5Parser.cpp
++++ b/parser/html/nsHtml5Parser.cpp
+@@ -682,7 +682,14 @@ nsresult nsHtml5Parser::StartExecutor() {
+   // This is part of the setup document.open() does.
+   RefPtr<nsHtml5TreeOpExecutor> executor(mExecutor);
+   executor->SetParser(this);
+-  mTreeBuilder->setScriptingEnabled(executor->IsScriptEnabled());
++  {
++    mozilla::dom::Document* doc = executor->GetDocument();
++    mTreeBuilder->SetNoscriptLog(
++        doc && doc->GetInnerWindow() ? "write" : "windowless-write", doc,
++        true);
++    mTreeBuilder->setScriptingEnabled(nsContentUtils::NoscriptScriptingFlag(
++        doc, executor->IsScriptEnabled()));
++  }
+   mTreeBuilder->setAllowDeclarativeShadowRoots(
+       executor->GetDocument()->AllowsDeclarativeShadowRoots());
+ 
+@@ -706,7 +713,8 @@ nsresult nsHtml5Parser::Initialize(mozilla::dom::Document* aDoc, nsIURI* aURI,
+   return mExecutor->Init(aDoc, aURI, aContainer, aChannel);
+ }
+ 
+-void nsHtml5Parser::StartTokenizer(bool aScriptingEnabled) {
++void nsHtml5Parser::StartTokenizer(bool aScriptingEnabled,
++                                   bool aNoscriptFlag) {
+   bool isSrcdoc = false;
+   nsCOMPtr<nsIChannel> channel;
+   nsresult rv = GetChannel(getter_AddRefs(channel));
+@@ -716,7 +724,7 @@ void nsHtml5Parser::StartTokenizer(bool aScriptingEnabled) {
+   mTreeBuilder->setIsSrcdocDocument(isSrcdoc);
+ 
+   mTreeBuilder->SetPreventScriptExecution(!aScriptingEnabled);
+-  mTreeBuilder->setScriptingEnabled(aScriptingEnabled);
++  mTreeBuilder->setScriptingEnabled(aNoscriptFlag);
+   mTreeBuilder->setAllowDeclarativeShadowRoots(
+       mExecutor->GetDocument()->AllowsDeclarativeShadowRoots());
+   mTokenizer->start();
+diff --git a/parser/html/nsHtml5Parser.h b/parser/html/nsHtml5Parser.h
+index da9061eaedc7..40e19a553cd5 100644
+--- a/parser/html/nsHtml5Parser.h
++++ b/parser/html/nsHtml5Parser.h
+@@ -219,7 +219,7 @@ class nsHtml5Parser final : public nsIParser,
+     }
+   }
+ 
+-  void StartTokenizer(bool aScriptingEnabled);
++  void StartTokenizer(bool aScriptingEnabled, bool aNoscriptFlag);
+ 
+   void ContinueAfterFailedCharsetSwitch();
+ 
+diff --git a/parser/html/nsHtml5StreamParser.cpp b/parser/html/nsHtml5StreamParser.cpp
+index 9191a8b1bf68..a69e067a865a 100644
+--- a/parser/html/nsHtml5StreamParser.cpp
++++ b/parser/html/nsHtml5StreamParser.cpp
+@@ -1084,7 +1084,10 @@ nsresult nsHtml5StreamParser::OnStartRequest(nsIRequest* aRequest) {
+   // load would have scripts enabled.
+   bool scriptingEnabled =
+       mMode == LOAD_AS_DATA ? false : mExecutor->IsScriptEnabled();
+-  mOwner->StartTokenizer(scriptingEnabled);
++  mozilla::dom::Document* noscriptDoc = mExecutor->GetDocument();
++  bool noscriptFlag =
++      nsContentUtils::NoscriptScriptingFlag(noscriptDoc, scriptingEnabled);
++  mOwner->StartTokenizer(scriptingEnabled, noscriptFlag);
+ 
+   MOZ_ASSERT(!mDecodingLocalFileWithoutTokenizing);
+   bool isSrcdoc = false;
+@@ -1135,7 +1138,14 @@ nsresult nsHtml5StreamParser::OnStartRequest(nsIRequest* aRequest) {
+     }
+   }
+   mTreeBuilder->setIsSrcdocDocument(isSrcdoc);
+-  mTreeBuilder->setScriptingEnabled(scriptingEnabled);
++  mTreeBuilder->SetNoscriptLog(
++      mMode == LOAD_AS_DATA
++          ? "XHR"
++          : (noscriptDoc && noscriptDoc->HasScriptsBlockedBySandbox()
++                 ? "sandbox"
++                 : "frame-disabled"),
++      noscriptDoc, false);
++  mTreeBuilder->setScriptingEnabled(noscriptFlag);
+   mTreeBuilder->SetPreventScriptExecution(
+       !((mMode == NORMAL) && scriptingEnabled));
+   mTreeBuilder->setAllowDeclarativeShadowRoots(
+diff --git a/parser/html/nsHtml5StringParser.cpp b/parser/html/nsHtml5StringParser.cpp
+index 55a7376205c0..56467740a380 100644
+--- a/parser/html/nsHtml5StringParser.cpp
++++ b/parser/html/nsHtml5StringParser.cpp
+@@ -76,8 +76,16 @@ nsresult nsHtml5StringParser::ParseFragment(
+   // inserted into the input stream."
+   // Step 13. "Return root's children, in tree order." (Nodes are appended
+   // directly into aTargetNode by the tree builder.)
++  bool isTemplate = aContextLocalName == nsGkAtoms::_template &&
++                    aContextNamespace == kNameSpaceID_XHTML;
++  mTreeBuilder->SetNoscriptLog(
++      isTemplate ? "template-fragment"
++                 : (doc->GetInnerWindow() ? "fragment" : "windowless-fragment"),
++      doc, true);
+   nsresult rv =
+-      Tokenize(aSourceBuffer, doc, true, aAllowDeclarativeShadowRoots);
++      Tokenize(aSourceBuffer, doc,
++               nsContentUtils::NoscriptScriptingFlag(doc, true),
++               aAllowDeclarativeShadowRoots);
+ 
+   // This parser is a process-wide singleton, so drop the strong reference to
+   // the context's custom element registry now that parsing is done; otherwise
+@@ -88,7 +96,7 @@ nsresult nsHtml5StringParser::ParseFragment(
+ 
+ nsresult nsHtml5StringParser::ParseDocument(
+     const nsAString& aSourceBuffer, Document* aTargetDoc,
+-    bool aScriptingEnabledForNoscriptParsing,
++    bool aScriptingEnabledForNoscriptParsing, const char* aNoscriptLogCategory,
+     mozilla::dom::Sanitizer* aSanitizer,
+     nsContentUtils::SanitizerMode aSanitizerMode) {
+   MOZ_ASSERT(!aTargetDoc->GetFirstChild());
+@@ -102,8 +110,10 @@ nsresult nsHtml5StringParser::ParseDocument(
+       aSanitizer, aSanitizerMode == nsContentUtils::SanitizerMode::Safe);
+   mTreeBuilder->SetPreventScriptExecution(true);
+ 
++  mTreeBuilder->SetNoscriptLog(aNoscriptLogCategory, aTargetDoc, true);
+   return Tokenize(aSourceBuffer, aTargetDoc,
+-                  aScriptingEnabledForNoscriptParsing,
++                  nsContentUtils::NoscriptScriptingFlag(
++                      aTargetDoc, aScriptingEnabledForNoscriptParsing),
+                   aTargetDoc->AllowsDeclarativeShadowRoots());
+ }
+ 
+diff --git a/parser/html/nsHtml5StringParser.h b/parser/html/nsHtml5StringParser.h
+index 1df52a772b57..341dff15a7ed 100644
+--- a/parser/html/nsHtml5StringParser.h
++++ b/parser/html/nsHtml5StringParser.h
+@@ -73,6 +73,7 @@ class nsHtml5StringParser : public nsParserBase {
+   nsresult ParseDocument(const nsAString& aSourceBuffer,
+                          mozilla::dom::Document* aTargetDoc,
+                          bool aScriptingEnabledForNoscriptParsing,
++                         const char* aNoscriptLogCategory,
+                          mozilla::dom::Sanitizer* aSanitizer,
+                          nsContentUtils::SanitizerMode aSanitizerMode);
+ 
+diff --git a/parser/html/nsHtml5TreeBuilder.cpp b/parser/html/nsHtml5TreeBuilder.cpp
+index 6c8973bbcfa4..fe8b12dbc388 100644
+--- a/parser/html/nsHtml5TreeBuilder.cpp
++++ b/parser/html/nsHtml5TreeBuilder.cpp
+@@ -239,6 +239,7 @@ void nsHtml5TreeBuilder::doctype(nsAtom* name, nsHtml5String publicIdentifier,
+ }
+ 
+ void nsHtml5TreeBuilder::comment(char16_t* buf, int32_t start, int32_t length) {
++  MaybeLogNoscriptMarkup();
+   needToDropLF = false;
+   if (!isInForeign()) {
+     switch (mode) {
+@@ -666,6 +667,7 @@ void nsHtml5TreeBuilder::endTokenization() {
+ void nsHtml5TreeBuilder::startTag(nsHtml5ElementName* elementName,
+                                   nsHtml5HtmlAttributes* attributes,
+                                   bool selfClosing) {
++  MaybeLogNoscriptMarkup();
+   flushCharacters();
+   int32_t eltPos;
+   needToDropLF = false;
+@@ -2294,6 +2296,9 @@ void nsHtml5TreeBuilder::checkMetaCharset(nsHtml5HtmlAttributes* attributes) {
+ }
+ 
+ void nsHtml5TreeBuilder::endTag(nsHtml5ElementName* elementName) {
++  if (elementName->getName() != nsGkAtoms::noscript) {
++    MaybeLogNoscriptMarkup();
++  }
+   flushCharacters();
+   needToDropLF = false;
+   int32_t eltPos;
+diff --git a/parser/html/nsHtml5TreeBuilderCppSupplement.h b/parser/html/nsHtml5TreeBuilderCppSupplement.h
+index d1913a17a0e6..44e80cc6ce94 100644
+--- a/parser/html/nsHtml5TreeBuilderCppSupplement.h
++++ b/parser/html/nsHtml5TreeBuilderCppSupplement.h
+@@ -16,6 +16,7 @@
+ #include "mozilla/CheckedInt.h"
+ #include "mozilla/Likely.h"
+ #include "mozilla/StaticPrefs_dom.h"
++#include "mozilla/SourceLocation.h"
+ #include "mozilla/StaticPrefs_media.h"
+ #include "mozilla/StaticPrefs_network.h"
+ #include "mozilla/UniquePtrExtensions.h"
+@@ -2621,3 +2622,38 @@ void nsHtml5TreeBuilder::errListUnclosedStartTags(int32_t aIgnored) {
+     mViewSource->AddErrorToCurrentRun("errListUnclosedStartTags");
+   }
+ }
++
++void nsHtml5TreeBuilder::SetNoscriptLog(const char* aCategory,
++                                        mozilla::dom::Document* aDoc,
++                                        bool aWithCaller) {
++  mNoscriptLogged = false;
++  mNoscriptLogCategory.Assign(aCategory);
++  mNoscriptLogInfo.Truncate();
++  if (aDoc && aDoc->GetDocumentURI()) {
++    aDoc->GetDocumentURI()->GetSpec(mNoscriptLogInfo);
++  }
++  mNoscriptLogInfo.Append('\t');
++  if (aWithCaller && NS_IsMainThread()) {
++    auto loc = mozilla::JSCallingLocation::Get();
++    if (loc && loc.mResource.is<nsCString>()) {
++      mNoscriptLogInfo.Append(loc.FileName());
++      mNoscriptLogInfo.AppendPrintf(":%u", loc.mLine);
++    }
++  }
++}
++
++void nsHtml5TreeBuilder::MaybeLogNoscriptMarkup() {
++  if (scriptingEnabled || mNoscriptLogged || mNoscriptLogCategory.IsEmpty()) {
++    return;
++  }
++  for (int32_t i = currentPtr; i >= 0; --i) {
++    if (stack[i]->ns == kNameSpaceID_XHTML &&
++        stack[i]->name == nsGkAtoms::noscript) {
++      mNoscriptLogged = true;
++      printf_stderr("NOSCRIPT_MARKUP\t%d\t%s\t%s\n",
++                    StaticPrefs::dom_html_parser_noscript_mode(),
++                    mNoscriptLogCategory.get(), mNoscriptLogInfo.get());
++      return;
++    }
++  }
++}
+diff --git a/parser/html/nsHtml5TreeBuilderHSupplement.h b/parser/html/nsHtml5TreeBuilderHSupplement.h
+index 328b132437cf..488c1ffcd3b5 100644
+--- a/parser/html/nsHtml5TreeBuilderHSupplement.h
++++ b/parser/html/nsHtml5TreeBuilderHSupplement.h
+@@ -10,6 +10,18 @@ using NotNull = mozilla::NotNull<T>;
+ 
+ nsHtml5OplessBuilder* mBuilder;
+ 
++nsCString mNoscriptLogCategory;
++nsCString mNoscriptLogInfo;
++bool mNoscriptLogged = false;
++void MaybeLogNoscriptMarkup();
++
++public:
++// Main thread only. Captures the category, document URI and JS caller.
++void SetNoscriptLog(const char* aCategory, mozilla::dom::Document* aDoc,
++                    bool aWithCaller);
++
++private:
++
+ // The spec's "parser sanitizer configuration" and the bookkeeping the
+ // insertion hooks need for it. Null unless sanitizing while parsing, which
+ // only ever happens with a non-null mBuilder. Defined in

@@ -1,0 +1,4 @@
+.venv/
+out*/shots/
+__pycache__/
+*.log
