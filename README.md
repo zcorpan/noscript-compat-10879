@@ -299,6 +299,8 @@ code, checked in the build only for the user-facing ones.
 
 ## Reproduce
 
+This run was done with the [`httparchive` skill](https://github.com/zcorpan/web-platform-skills/blob/main/docs/httparchive.md). The steps below are standalone and rerun the same analysis without the skill.
+
 ```sh
 python3 scripts/make_pages.py queries/top100-per-counter.csv pages.jsonl
 # Firefox: worktree at gecko-base.txt, python3 scripts/apply_gecko_patch.py <worktree>, ./mach build
